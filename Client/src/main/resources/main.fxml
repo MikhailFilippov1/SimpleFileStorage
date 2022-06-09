@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.lang.*?>
+<?import java.util.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<?import javafx.geometry.Insets?>
+<VBox fx:id="rootNode" alignment="CENTER" prefHeight="400.0" prefWidth="600.0" style="-fx-background-color: linear-gradient(#fff 0%, #eee 10%, #ddd 90%, #bbb 100%);" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/8.0.172-ea" fx:controller="MainController">
+    <VBox>
+        <TextField fx:id="tfFileName" focusTraversable="false" promptText="Укажите имя файла на сервере, который хотите скачать" HBox.hgrow="ALWAYS" />
+        <Button onAction="#pressOnDownloadBtn" text="Download" />
+        <TextField fx:id="sendFileName" focusTraversable="false" promptText="Выберите из списка имя файла , который хотите отправить" HBox.hgrow="ALWAYS" />
+        <ButtonBar prefHeight="40.0" prefWidth="200.0">
+            <buttons>
+                <Button onAction="#pressOnSendBtn" text="Send" />
+                <Button onAction="#mockAction" text="Delete" />
+                <Button onAction="#mockAction" text="Rename" />
+               <!-- <Button layoutX="100.0" layoutY="285.0" onAction="#newUserPanel" prefHeight="26.0" prefWidth="70.0" text="New User" />
+               // <Button layoutX="170.0" layoutY="285.0" onAction="#sendAuth" prefHeight="26.0" prefWidth="70.0" text="Connect" /> -->
+            </buttons>
+            <VBox.margin>
+                <Insets top="15.0" />
+            </VBox.margin>
+        </ButtonBar>
+
+    </VBox>
+    <ListView fx:id="filesList" VBox.vgrow="ALWAYS" />
+</VBox>
