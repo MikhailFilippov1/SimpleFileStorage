@@ -13,7 +13,7 @@ public class Network {
         try {
             socket = new Socket("localhost", 8189);
             out = new ObjectEncoderOutputStream(socket.getOutputStream());
-            in = new ObjectDecoderInputStream(socket.getInputStream(), 10 * 1024 * 1024);
+            in = new ObjectDecoderInputStream(socket.getInputStream(), 5 * 1024 * 1024);
         } catch (IOException e) {
             e.printStackTrace();
         }

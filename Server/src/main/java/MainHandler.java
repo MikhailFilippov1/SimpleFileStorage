@@ -45,8 +45,6 @@ public class MainHandler extends ChannelInboundHandlerAdapter {
             }).start();
         }
         if(msg instanceof FileMessage) {                                        //Прием файла от клиента
-            CountDownLatch cdl = new CountDownLatch(1);
-            Thread t = new Thread(() -> {
             try {
                 FileMessage fs = (FileMessage) msg;
                 while (true) {
@@ -60,18 +58,16 @@ public class MainHandler extends ChannelInboundHandlerAdapter {
                     System.out.println(fs.partNumber + " / " + fs.partsCount);
                     FileOutputStream fos = new FileOutputStream("server_storage/" + fs.filename, append);
                     fos.write(fs.data);
+                    Thread.sleep(200);
                     fos.close();
                     if (fs.partNumber == fs.partsCount) {
-                        cdl.countDown();
                         break;
                     }
                 }
                 } catch(Exception e){
                     e.printStackTrace();
                 }
-            });
-            t.setDaemon(true);
-            t.start();
+
 
 
 //            FileMessage fs = (FileMessage) msg;
