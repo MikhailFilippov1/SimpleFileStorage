@@ -6,14 +6,14 @@ import java.net.Socket;
 
 public class Network {
     private static Socket socket;
-    private static ObjectEncoderOutputStream out;
-    private static ObjectDecoderInputStream in;
+    static ObjectEncoderOutputStream out;
+     static ObjectDecoderInputStream in;
 
     public static void start() {
         try {
             socket = new Socket("localhost", 8189);
             out = new ObjectEncoderOutputStream(socket.getOutputStream());
-            in = new ObjectDecoderInputStream(socket.getInputStream(), 50 * 1024 * 1024);
+            in = new ObjectDecoderInputStream(socket.getInputStream(), 10 * 1024 * 1024);
         } catch (IOException e) {
             e.printStackTrace();
         }

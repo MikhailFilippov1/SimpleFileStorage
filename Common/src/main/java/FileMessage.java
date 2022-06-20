@@ -3,8 +3,10 @@ import java.nio.file.Files;
 import java.nio.file.Path;
 
 public class FileMessage extends AbstractMessage {
-    private String filename;
-    private byte[] data;
+    String filename;
+    int partNumber;
+    int partsCount;
+    byte[] data;
 
     public String getFilename() {
         return filename;
@@ -14,9 +16,14 @@ public class FileMessage extends AbstractMessage {
         return data;
     }
 
-    public FileMessage(Path path) throws IOException {
+    public FileMessage(Path path, int partNumber, int partsCount, byte[] data) {
         filename = path.getFileName().toString();
-        data = Files.readAllBytes(path);
-        System.out.println("Data>" + data);
+        this.partNumber = partNumber;
+        this.partsCount = partsCount;
+        //data = Files.readAllBytes(path);
+        this.data = data;
     }
 }
+
+
+
